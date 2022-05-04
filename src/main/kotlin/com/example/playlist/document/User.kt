@@ -1,3 +1,11 @@
 package com.example.playlist.document
 
-data class User()
+import org.springframework.data.annotation.Id
+
+data class User(
+    @Id
+    val id: String,
+    val name: String,
+    val favorites: Playlist,
+    val playlists: List<Playlist>,
+)
