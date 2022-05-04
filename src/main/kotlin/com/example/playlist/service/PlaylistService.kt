@@ -6,4 +6,5 @@ import reactor.core.publisher.Mono
 
 interface PlaylistService {
     fun findAll(): Flux<Playlist>
+    fun findById(id: String): Mono<Playlist>
 }
