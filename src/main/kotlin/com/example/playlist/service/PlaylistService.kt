@@ -7,5 +7,5 @@ import reactor.core.publisher.Mono
 interface PlaylistService {
     fun findAll(): Flux<Playlist>
     fun findById(id: String): Mono<Playlist>
-    fun save(playlist: Playlist)
+    fun save(playlist: Playlist): Mono<Playlist>
 }

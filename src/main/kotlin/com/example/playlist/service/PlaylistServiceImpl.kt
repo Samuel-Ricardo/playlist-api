@@ -9,9 +9,9 @@ import reactor.core.publisher.Mono
 class PlaylistServiceImpl: PlaylistService {
 
     @Autowired
-    val repository: PlaylistRepository = TODO();
+    lateinit var repository: PlaylistRepository;
 
     override fun findById(id: String): Mono<Playlist> { return repository.findById(id); }
     override fun findAll(): Flux<Playlist> {return repository.findAll()}
-    
+    override fun save(playlist: Playlist): Mono<Playlist> { return repository.save(playlist) }
 }
