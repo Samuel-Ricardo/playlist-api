@@ -12,7 +12,13 @@ import reactor.core.publisher.Mono
 
 @Component
 class PlaylistHandler(
+    @Autowired
     val service: PlaylistService
 ) {
 
+    fun findAll(request: ServerRequest): Mono<ServerResponse>{
+        return ok()
+            .contentType(MediaType.APPLICATION_JSON)
+            .body(service.findAll(), Playlist::class.java)
+    }
 }
