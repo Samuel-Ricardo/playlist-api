@@ -36,6 +36,6 @@ class PlaylistHandler(
         val playlist:Mono<Playlist> = request.bodyToMono(Playlist::class.java)
         return ok()
             .contentType(MediaType.APPLICATION_JSON)
-            .body(BodyInserters.fromPublisher(playlist.flatMap(service::save), Playlist::class.java)
+            .body(BodyInserters.fromPublisher(playlist.flatMap(service::save), Playlist::class.java))
     }
 }
