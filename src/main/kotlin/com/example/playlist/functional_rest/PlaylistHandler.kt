@@ -21,4 +21,13 @@ class PlaylistHandler(
             .contentType(MediaType.APPLICATION_JSON)
             .body(service.findAll(), Playlist::class.java)
     }
+
+    fun findByID(request: ServerRequest): Mono<ServerResponse>{
+        val id = request.pathVariable("id");
+        return ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(service.findById(id), Playlist::class.java);
+    }
+
+
 }
