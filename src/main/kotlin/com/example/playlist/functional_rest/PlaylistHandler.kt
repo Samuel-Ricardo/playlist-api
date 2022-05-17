@@ -5,6 +5,9 @@ import com.example.playlist.service.PlaylistService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
+import org.springframework.web.reactive.function.BodyInserter
+import org.springframework.web.reactive.function.BodyInserters
+import org.springframework.web.reactive.function.server.EntityResponse
 import org.springframework.web.reactive.function.server.ServerRequest
 import org.springframework.web.reactive.function.server.ServerResponse
 import org.springframework.web.reactive.function.server.ServerResponse.ok
@@ -29,5 +32,10 @@ class PlaylistHandler(
                 .body(service.findById(id), Playlist::class.java);
     }
 
-
+    fun save(request: ServerRequest): Mono<ServerResponse>{
+        val playlist:Mono<Playlist> = request.bodyToMono(Playlist::class.java)
+        return ok()
+            .contentType(MediaType.APPLICATION_JSON)
+            .body(BodyInserters.fromPublisher(playlist.flatMap(service::save), Playlist::class.java)
+    }
 }
