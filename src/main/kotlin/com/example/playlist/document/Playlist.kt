@@ -8,5 +8,5 @@ data class Playlist(
     @Id
     val id: String,
     val name: String,
-    val videos: List<Video>
+    val videos: MutableList<Video>
 )
