@@ -7,5 +7,5 @@ data class User(
     val id: String,
     val name: String,
     val favorites: Playlist,
-    val playlists: List<Playlist>,
+    val playlists: MutableList<Playlist>,
 )
